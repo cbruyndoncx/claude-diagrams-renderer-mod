@@ -1,0 +1,7 @@
+{
+  "name": "diagram-preview",
+  "version": "0.2.0",
+  "description": "Show Obsidian vault diagrams (.canvas, Excalidraw, draw.io, BPMN) as SVG in Claude Desktop side panes, with landscape/portrait and zoom",
+  "author": { "name": "BRNCX" },
+  "types": "./types/index.d.ts"
+}
