@@ -48,8 +48,36 @@ Claude Code 2.1.286). The plugin is named `diagram-preview`.
 3. Start a new Code-tab session. For live editing, copy the folder into a session's dev-mods
    folder instead (the `plugin-authoring` skill sets that up) — not both at once, or it loads twice.
 
-Optional tools: `d2` for D2 files; [draw.io Desktop](https://www.drawio.com/) for exact draw.io
-renders (the built-in renderer covers the rest).
+## Requirements
+
+**Required:** Claude Code with mods (function hooks), 2.1.286 or later. The mod has no npm
+packages: it imports only the engine (`claude-code`) and its own files.
+
+**Optional tools.** The mod installs nothing itself. It looks for these tools when it needs them;
+when one is missing it falls back to its own renderer or says what is missing:
+
+| Tool | Used for | When it is missing |
+|---|---|---|
+| [`d2`](https://d2lang.com) CLI | `.d2` files (needed: there is no built-in D2 renderer) | The pane says "d2 is not installed (looked on the PATH and inside WSL)" |
+| [draw.io Desktop](https://www.drawio.com/) | Exact draw.io renders (its CLI export) | The built-in renderer draws the file |
+| [Obsidian](https://obsidian.md) with the [Advanced URI](https://github.com/Vinzent03/obsidian-advanced-uri) plugin | The **Open in Obsidian** button (only shown for files inside a vault) | The button cannot open the file |
+| [Excalidraw](https://github.com/zsviczian/obsidian-excalidraw-plugin) plugin with *auto-export SVG* on | Excalidraw's hand-drawn picture (`<name>.excalidraw.svg`, used when newer than the file) | The built-in renderer draws the file |
+
+The mod finds `d2` on the PATH first, then inside WSL (`wsl.exe -e bash -lc 'd2 …'`). Installing it:
+
+```bash
+# Linux, macOS or WSL
+curl -fsSL https://d2lang.com/install.sh | sh -s --
+```
+
+```powershell
+# Windows
+winget install Terrastruct.D2
+```
+
+draw.io Desktop is looked for at its default install locations: `%ProgramFiles%\draw.io\`,
+`%LOCALAPPDATA%\Programs\draw.io\`, `/Applications/draw.io.app`, `/usr/bin/drawio` and
+`/snap/bin/drawio`. On Windows, install it with `winget install JGraph.Draw`.
 
 ## Develop
 
