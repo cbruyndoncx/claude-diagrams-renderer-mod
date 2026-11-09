@@ -33,8 +33,8 @@ The pane redraws by itself after Claude edits the file with Write or Edit.
 
 ## Install
 
-This is a *mod*: a plugin of Claude Code function hooks (early access; written against
-Claude Code 2.1.286). The plugin is named `diagram-preview`.
+This is a *mod*: a plugin of Claude Code function hooks (written against
+Claude Code 2.1.286; mods are generally available since 2.1.287). The plugin is named `diagram-preview`.
 
 1. Clone this repository.
 2. Point Claude Desktop at it with `CLAUDE_CODE_PLUGIN_DIRS` in the `env` block of your
